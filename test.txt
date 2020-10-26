@@ -5,4 +5,11 @@ dev dev git is a free software.
 savesavsavsavsavsva
 
 
+1026 change: add a word.
+1026 change: add 2 words.
+
+
 dev: 1026 11:16 PM
+
+fix bug in master
+
