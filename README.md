@@ -23,20 +23,20 @@
 
 ## 远程仓库
 ### 创建远程仓库，将本地仓库与之关联
-在远程仓库平台（如GitHub等）创建repository后，可以用以下命令将本地repository与之关联：
-> $git remote add origin git@github.com:mattchuchuchu/gitskills.git
-下一步就是将本地repository种的所有内容推送到remote repository上去：
-> $git push -u origin master
-`Note: 第一次push的时候加上-u参数，git会将本地分支和远程分支关联起来，之后的推送/拉取就可以简化命令。`
+在远程仓库平台（如GitHub等）创建repository后，可以用以下命令将本地repository与之关联：<br />
+> $git remote add origin git@github.com:mattchuchuchu/gitskills.git <br />
+下一步就是将本地repository种的所有内容推送到remote repository上去：<br />
+> $git push -u origin master <br />
+`Note: 第一次push的时候加上-u参数，git会将本地分支和远程分支关联起来，之后的推送/拉取就可以简化命令。`<br />
 ### 创建远程仓库，拉取远程code到本地
-> $git clone git@github.com:mattchuchuchu/gitskills.git
+> $git clone git@github.com:mattchuchuchu/gitskills.git <br />
 > cd gitskills
 
 ## 分支管理
 
 ## Tag管理
-> $git tag v1.0
-> $git tag v1.0 <commit-id>
+> $git tag v1.0 <br />
+> $git tag v1.0 <commit-id> <br />
 > $git show tag v1.0
 
 
