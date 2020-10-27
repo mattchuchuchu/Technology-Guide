@@ -1,12 +1,53 @@
 # Postman
 
-## 接口请求
-
-
 URL携带查询参数的GET请求
 发送表单的POST请求：request type选择x-www-form-urlencoded，添加相应表单数据。
 支持上传文件的表单POST请求： request type选择form-data,添加file类型的key，上传文件。
 JSON类型的接口请求：选择Body->raw-JSON
+
+## 
+## 变量
+## 断言
+Postman在Pre-Script Test 和 Test中可以添加自定义逻辑，Test中可以通过断言来进行返回值验证，为自动化测试提供了条件。Postman内置了一些JS库，提供了许多基础的断言。
+
+### 常用断言
+- 断言Response状态
+  - 断言Response Status Code<br/>
+    `pm.test("status code is 200", function(){`<br/>
+    `pm.response.to.have.status(200);`<br/>
+    `})`<br/>
+  - 断言Response Status Message<br/>
+    `pm.test("status code is OK", function(){`<br/>
+    `pm.response.to.have.status("OK");`<br/>
+    `})`<br/>
+  - 断言Response Time<br/>
+    `pm.test("Response Time is less than 200ms", function(){`<br/>
+    `pm.expect(pm.response.ResponseTime).to.be.below(200);`<br/>
+    `})`
+- 断言Response Header属性
+  - 断言Header中包含特定属性，例如Content-Type<br />
+    `pm.test("Content Type is present", function() {`<br/>
+    `pm.response.to.have.header("Content-Type");`<br/>
+    `})`<br/>
+- 断言Response Body
+  - 断言Body中包含xxx字符串<br />
+    `pm.test("Body matches string", function(){`<br/>
+    `pm.expect(pm.response.text()).to.include("xxx");`<br/>
+    `})`<br/>
+  - 断言Body等于xxx字符串<br />
+    `pm.test("Body is correct", function(){`<br/>
+    `pm.response.to.have.body("xxx");`<br/>
+    `})`<br/>
+  - 断言Body（JSON）中某个键名对应的值<br/>
+    `pm.test("your test name", function(){`<br/>
+    `var jsonData = pm.response.json();`<br />
+    `pm.expect(jsonData.name).to.eql("tom");`<br/>
+    `})`<br/>
+    
+### 常用断言实例
+1. 状态响应码为200
+2. 返回对象包含Scope所预先定义的属性
+3. 返回对象中特定属性的值为期望值
 
 
 
