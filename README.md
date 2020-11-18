@@ -46,27 +46,30 @@
 | -------| ------- | ------- |
 | git config | Initialize git configuration such as user.name/user.password. | git config --global user.name xxx |
 | git init | Initialize empty repository | git init |
-| git add | Add file to temporary index | git add readme.txt |
-| git commit | Submit file to local repository | git commit -m "add file" |
 | git status | Check current status of local repository | |
 | git diff | Check differences between current directory and local repository | git diff readme.txt (between working directory and stage) <br/> git diff --HEAD readme.txt (between working directory and local repository) |
 | git log | Check the change logs | git log --pretty=oneline --abbrev-commit <br/> git log --graph --pretty=oneline --abbrev-commit|
-| git reset | Revert file to previous versions | git reset<br/> `--hard HEAD^ - 上个版本`<br/>`--hard HEAD^^ - 上上个版本`<br/>`--hard HEAD~100 - 上100个版本`<br />`--hard commit-id - 指定版本号`<br/>`HEAD <file> 撤销指定文件在暂存区的改动，重新放回工作区`|
 | git reflog | Check all the submit logs| |
-| git checkout -- file | Revert local changes to last commit/add status | git checkout -- readme.txt |
-| git rm file | Delete file | equals to "rm file and then git add file". | 
-| git push | Push local repository changes to remote | git push origin master |
-| git checkout -b branch | Create and switch to a new branch | git checkout -b develop  equals to <br /> git branch develop + git checkout develop |
+| -------| ------- | ------- |
 | git branch | Check branches information | git branch - check local branches <br /> git branch -r - check remote branches<br/> git branch -d dev - delete dev branch<br />git branch -D dev - force delete dev branch even if there are some unmerged changes. |
-| git merge branch | Merge branch to current branch | git merge devlop 使用fast-forward的方式合并分支，删除merge分支后分支提交信息会丢失。<br />git merge --no-ff -m "merge with no-ff" dev 使用no-ff的普通方式合并分支，会保留历史分支的提交信息。|
+| git remote | Check the remote branch information | git remote -v with more details |
 | git switch branch | Switch to a branch | git switch master <br />git switch -c develop = git checkout -b develop |
+| git checkout -b branch | Create and switch to a new branch | git checkout -b develop  equals to <br /> git branch develop + git checkout develop |
+| git branch --set-upstream-to=origin/dev dev | set upstream connection between dev and origin/dev | |
+| git merge branch | Merge branch to current branch | git merge devlop 使用fast-forward的方式合并分支，删除merge分支后分支提交信息会丢失。<br />git merge --no-ff -m "merge with no-ff" dev 使用no-ff的普通方式合并分支，会保留历史分支的提交信息。|
+| -------| ------- | ------- |
+| git add | Add file to temporary index | git add readme.txt |
+| git commit | Submit file to local repository | git commit -m "add file" |
+| git push | Push local repository changes to remote | git push origin master |
+| git checkout -- file | Revert local changes to last commit/add status | git checkout -- readme.txt |
+| git reset | Revert file to previous versions | git reset<br/> `--hard HEAD^ - 上个版本`<br/>`--hard HEAD^^ - 上上个版本`<br/>`--hard HEAD~100 - 上100个版本`<br />`--hard commit-id - 指定版本号`<br/>`HEAD <file> 撤销指定文件在暂存区的改动，重新放回工作区`|
+| git rm file | Delete file | equals to "rm file and then git add file". | 
+| -------| ------- | ------- |
 | git stash | Temporarily save file changes in current branch | |
 | git stash list | Get the stash list | |
 | git stash pop | pop-up the stash | |
 | git stash apply | apply the stash | git stash apply stash@{0} <br />use git stash drop to delete the stash |
 | git cherry-pick <commit> | Copy a commit to current branch | |
-| git remote | Check the remote branch information | git remote -v with more details |
-| git branch --set-upstream-to=origin/dev dev | set upstream connection between dev and origin/dev | |
 | git rebase | Rebase your commits when merging with others' commits after pull remote branch | |
 | git tag | tag your repository | git tag -a "tag name" -m "tag comments" <commit-id>  <br />other operations:<br />git tag -d v0.1 - 删除tag<br /> git push origin v1.0 (--tags)<br /> git tag -d <tagname> + git push origin :refs/tags/<tagname> 删除远程上的tag（先删本地，再删远程）|
   
