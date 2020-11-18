@@ -10,7 +10,7 @@
 > git init <br/>
 
 ## 工作区、暂存区、本地版本库、远程版本库
-![gitstorage](Images/gitrepository.png)
+![gitstorage](../Images/gitrepository.png)
 
 - 工作区（Working Directory)
   本地的code change都在工作区
@@ -72,9 +72,3 @@
 | git cherry-pick <commit> | Copy a commit to current branch | |
 | git rebase | Rebase your commits when merging with others' commits after pull remote branch | |
 | git tag | tag your repository | git tag -a "tag name" -m "tag comments" <commit-id>  <br />other operations:<br />git tag -d v0.1 - 删除tag<br /> git push origin v1.0 (--tags)<br /> git tag -d <tagname> + git push origin :refs/tags/<tagname> 删除远程上的tag（先删本地，再删远程）|
-  
-  
-
-
-
-
