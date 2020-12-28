@@ -29,36 +29,36 @@ https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster
 `az login --use-device-code`<br>
 
 2. *Switch Subscription*<br/>
-`az account set --subscription Dev_vCloud_Baron.Zhang`<br/>
+`az account set --subscription *subscription_name*`<br/>
 
 3. *Connect*<br/>
-`az aks get-credentials --subscription 33387f2e-62d0-4f8c-84c8-970a9f8b0155 -g vnet-resources -n devops-aks-apps`<br/>
-`az aks get-credentials --subscription 33387f2e-62d0-4f8c-84c8-970a9f8b0155 -g vnet-resources -n devops-aks-apps`
+`az aks get-credentials --subscription *subscription_id* -g vnet-resources -n devops-aks-apps`<br/>
+`az aks get-credentials --subscription *subscription_id* -g vnet-resources -n devops-aks-apps`
 
 
 # Commands
 
 ## useful commands
 1. *Get all the running pods*<br/>
-`kubectl get pod -n curricula`<br/>
-`kubectl delete pod pod_name -n ns_name `<br/>
+`kubectl get pod -n *ns_name*`<br/>
+`kubectl delete pod *pod_name* -n *ns_name* `<br/>
 
 2. *Check log in a pod*<br/>
-`kubectl logs teach-5c78847fbd-66dcw -n curricula`<br/>
+`kubectl logs *pod_name* -n *ns_name*`<br/>
 
 3. *Connect a pod to execute more commands*<br/>
-`kubectl exec -it learn-5c4d4d5cbd-gmbkx bash -n curricula`<br/>
-`kubectl exec -it teamsbot-6bfcdb876c-c8mhx -n lmsdemo -- bash`<br/>
+`kubectl exec -it *pod_name* bash -n *ns_name*`<br/>
+`kubectl exec -it *pod_name* -n lmsdemo -- bash`<br/>
 `kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.`
 
 
-`kubectl describe pod/common-5c685b8ddd-wxhrb -n lmstest`
+`kubectl describe pod/*pod_name* -n *ns_name*`
 
 4. *Get all the services*<br/>
-`kubectl get svc -n lmso`<br/>
+`kubectl get svc -n *ns_name*`<br/>
 
 5. *Access one service locally*<br/>
-`kubectl port-forward service/bank 8000:16007 -n lmso`<br/>
+`kubectl port-forward service/bank 8000:16007 -n *ns_name*`<br/>
 
 ## kubectl commands
 
@@ -76,22 +76,22 @@ https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster
 Step1 - zip log in pod
 ```
 ssh user@host (remote linux)
-kubectl get pod -n curricula
-kubectl logs teach-5c78847fbd-66dcw -n curricula
-kubectl exec -it learn-5c4d4d5cbd-gmbkx bash -n curricula
+kubectl get pod -n *ns_name*
+kubectl logs *pod_name* -n *ns_name*
+kubectl exec -it *pod_name* bash -n *ns_name*
 tar -cvf logs.1119.tar logs
 exit (go back to linux)
 ```
 Step2 - download to linux from k8s
 ```
-kubectl cp teach-f8f565dbb-gdccw:logs.1119.tar ./logs/logs.1119.tar -n curricula
+kubectl cp *pod_name*:logs.1119.tar ./logs/logs.1119.tar -n *ns_name*
 ##sz logs.learn_1119.tar
 ##rz
 exit(go back to windows)
 ```
 Step3 - download to windows from linux
 ```
-scp glen@10.2.30.60:/home/glen/logs/logs.1119.tar C:\Users\ychu\logs
+scp user@host:/home/*user_name*/logs/logs.1119.tar C:\Users\*user_name*\logs
 (input password)
 Done
 ```
